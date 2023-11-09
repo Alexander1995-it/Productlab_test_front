@@ -1,0 +1,26 @@
+.wrapperLogin {
+  display: flex;
+  align-items: center;
+  height: 70vh;
+  .loginBlock {
+    .title {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+    .login, .password{
+      margin-bottom: 10px;
+    }
+    .buttonSignIn {
+      text-align: center;
+    }
+  }
+
+}
+
