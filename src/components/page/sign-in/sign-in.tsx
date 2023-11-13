@@ -44,7 +44,7 @@ export const SignIn = () => {
               required: "Password is required",
               minLength: {
                 value: 5,
-                message: "Password has to be at least 3 characters long",
+                message: "Password has to be at least 5 characters long",
               },
             })}
             type={"password"}
