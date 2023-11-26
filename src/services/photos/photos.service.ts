@@ -5,7 +5,14 @@ export const PhotosService = baseApi.injectEndpoints({
   endpoints: (builder) => {
     return {
       getPhotos: builder.query<PhotosResponse, void>({
-        query: () => `photos`,
+        query: () => {
+          return {
+            url: "photos",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          };
+        },
       }),
       getComments: builder.query<any, void>({
         query: (params: any) => {

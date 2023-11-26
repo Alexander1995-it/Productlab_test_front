@@ -4,26 +4,35 @@ import { AuthResponse } from "./auth.types";
 export const AuthService = baseApi.injectEndpoints({
   endpoints: (builder) => {
     return {
-      getPhotos: builder.query<AuthResponse, void>({
-        query: () => `photos`,
-      }),
       getComments: builder.query<any, void>({
         query: (params: any) => {
           return {
-            url: "photos/comment",
+            url: "images/image1",
             params,
           };
         },
       }),
-      createComment: builder.mutation<any, any>({
+      getAuth: builder.mutation<any, any>({
         query: (body) => ({
-          url: "photos/comment",
+          url: "login",
           method: "POST",
           body,
         }),
+      }),
+      getAuthMe: builder.query<any, void>({
+        query: () => {
+          console.log("me");
+          return {
+            url: "auth/me",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          };
+        },
       }),
     };
   },
 });
 
-// export const { useGetPhotosQuery, useCreateCommentMutation } = PhotosService;
+export const { useGetAuthMutation, useGetAuthMeQuery, useGetCommentsQuery } =
+  AuthService;

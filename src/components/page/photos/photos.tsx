@@ -1,13 +1,22 @@
 import React from "react";
 import { useGetPhotosQuery } from "../../../services/photos";
+import { Navigate } from "react-router-dom";
 
 export const Photos = () => {
-  const { data } = useGetPhotosQuery();
-  console.log(data);
+  const { isError, isLoading, data, isSuccess } = useGetPhotosQuery();
+  if (isError) {
+    return <Navigate to="/login" />;
+  }
   return (
     <div>
-      {data && <img width="500px" height="500px" src={data[0].url} alt="" />}
-      Photos
+      {data &&
+        data.map((el: any) => {
+          return (
+            <div key={el.id}>
+              <img src={el.url} alt="" width="300px" height="300px" />
+            </div>
+          );
+        })}
     </div>
   );
 };
